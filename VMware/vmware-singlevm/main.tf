@@ -1,80 +1,89 @@
-#####################################################################
-##
-##      Created 6/5/18 by ucdpadmin. for vmware-singlevm
-##
-#####################################################################
+##################### Variables ###############################
 
-## REFERENCE {"net1":{"type": "vsphere_reference_network"}}
-
-terraform {
-  required_version = "> 0.8.0"
+variable "name" {
+	description = "Name of the Virtual Machine"
 }
 
+variable "datacenter" {
+	description = "Target vSphere datacenter for Virtual Machine creation"
+}
+
+variable "vcpu" {
+	description = "Number of Virtual CPU for the Virtual Machine"
+	default = 2
+}
+
+variable "memory" {
+	description = "Memory for Virtual Machine in MBs"
+	default = 4096
+}
+
+variable "cluster" {
+	description = "Target vSphere Cluster to host the Virtual Machine"
+}
+
+variable "network_label" {
+	description = "vSphere Port Group or Network label for Virtual Machine's vNIC" 
+}
+
+variable "ipv4_address" {
+	description = "IPv4 address for vNIC configuration"
+}
+
+variable "ipv4_gateway" {
+	description = "IPv4 gateway for vNIC configuration"
+}
+
+variable "ipv4_prefix_length" {
+	description = "IPv4 Prefix length for vNIC configuration"
+}
+
+variable "storage" {
+	description = "Data store or storage cluster name for target VMs disks"
+}
+
+variable "vm_template" {
+	description = "Source VM or Template label for cloning"
+}
+
+variable "allow_selfsigned_cert" {
+    description = "Communication with vsphere server with self signed certificate"
+    default = true
+}
+
+############### Optinal settings in provider ##########
 provider "vsphere" {
-  user           = "${var.user}"
-  password       = "${var.password}"
-  vsphere_server = "${var.vsphere_server}"
-
-  allow_unverified_ssl = "${var.allow_unverified_ssl}"
-  version = "~> 1.2"
+    version = "~> 1.0"
+    allow_unverified_ssl = "${var.allow_selfsigned_cert}"  # Communication with vsphere server with self signed certificate
+}
+ 
+data "vsphere_datacenter" "datacenter" {
+  name = "${var.datacenter}"
 }
 
+################## Resources ###############################
 
-data "vsphere_virtual_machine" "vm1_template" {
-  name          = "${var.vm1_template_name}"
-  datacenter_id = "${data.vsphere_datacenter.vm1_datacenter.id}"
-}
-
-data "vsphere_datacenter" "vm1_datacenter" {
-  name = "${var.vm1_datacenter_name}"
-}
-
-data "vsphere_datastore" "vm1_datastore" {
-  name          = "${var.vm1_datastore_name}"
-  datacenter_id = "${data.vsphere_datacenter.vm1_datacenter.id}"
-}
-
-data "vsphere_network" "net1" {
-  name          = "${var.net1_network_name}"
-  datacenter_id = "${data.vsphere_datacenter.vm1_datacenter.id}"
-}
-
-resource "vsphere_virtual_machine" "vm1" {
-  name          = "${var.vm1_name}"
-  datastore_id  = "${data.vsphere_datastore.vm1_datastore.id}"
-  num_cpus      = "${var.vm1_number_of_vcpu}"
-  memory        = "${var.vm1_memory}"
-  guest_id = "${data.vsphere_virtual_machine.vm1_template.guest_id}"
-  resource_pool_id = "${var.vm1_resource_pool}"
+#
+# Create VM with single vnic on a network label by cloning 
+#
+resource "vsphere_virtual_machine" "vm_1" {
+  name   = "${var.name}"
+  datacenter = "${var.datacenter}" 
+  vcpu   = "${var.vcpu}"
+  memory = "${var.memory}"
+  cluster = "${var.cluster}"
   network_interface {
-    network_id = "${data.vsphere_network.net1.id}"
-  }
-  clone {
-    template_uuid = "${data.vsphere_virtual_machine.vm1_template.id}"
-  }
-  disk {
-    name = "${var.vm1_disk_name}"
-    size = "${var.vm1_disk_size}"
+      label = "${var.network_label}"
+      ipv4_gateway = "${var.ipv4_gateway}"
+      ipv4_address = "${var.ipv4_address}"
+      ipv4_prefix_length = "${var.ipv4_prefix_length}"
   }
   disk {
-    attach = true
-    label  = "${var.disk1_disk_label}"
-    path   = "${vsphere_virtual_disk.data1.vmdk_path}"
-    unit_number = "${var.disk1_unit_number}"
-  }
-  disk {
-    attach = true
-    label  = "${var.data1_disk_label}"
-    path   = "${vsphere_virtual_disk.data1.vmdk_path}"
-    unit_number = "${var.data1_unit_number}"
+    datastore = "${var.storage}"
+    template = "${var.vm_template}"
   }
 }
 
-resource "vsphere_virtual_disk" "data1" {
-  size          = "${var.data1_size}"
-  vmdk_path     = "${var.data1_vmdk_path}"
-  datacenter    = "${var.data1_datacenter_name}"
-  datastore     = "${var.data1_datastore_name}"
-  type          = "${var.data1_disk_type}"
+output "ipv4_address" {
+  value = "${vsphere_virtual_machine.vm_1.network_interface.0.ipv4_address}"
 }
-

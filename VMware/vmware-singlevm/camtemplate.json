@@ -1,14 +1,20 @@
 {
-   "name": "vmware-singlevm",
-   "description": "Description for vmware-singlevm.",
-   "type": "userCreated",
-   "manifest": {
-     "template_type": "Terraform",
-     "template_format": "HCL",
-     "template_provider": "Other"
-   },
-   "metadata": {
-     "displayName": "vmware-singlevm",
-     "bullets": []
-   }
- }
+  "name": "VMware Single VM",
+  "description": "Create Virtual Machine with single NIC",
+  "type": "prebuilt",
+  "version": "1.0.0.0",
+  "manifest": {
+    "template_type": "Terraform",
+    "template_format": "HCL",
+    "template_provider": "VMware vSphere",
+    "template": {
+      "templateOutput": "",
+      "templateVariables": "",
+      "templateData": ""
+    }
+  },
+  "metadata": {
+      "displayName": "VMware Single VM",
+      "longDescription": "Create Virtual Machine with single vnic on a network label by cloning"
+  }
+}
