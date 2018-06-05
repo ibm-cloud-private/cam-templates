@@ -1,0 +1,14 @@
+{
+   "name": "vmware-singlevm",
+   "description": "Description for vmware-singlevm.",
+   "type": "userCreated",
+   "manifest": {
+     "template_type": "Terraform",
+     "template_format": "HCL",
+     "template_provider": "Other"
+   },
+   "metadata": {
+     "displayName": "vmware-singlevm",
+     "bullets": []
+   }
+ }
