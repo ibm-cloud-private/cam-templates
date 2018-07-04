@@ -15,11 +15,11 @@ provider "ibm" {
 }
 
 # Create a new ssh key
-resource "ibm_compute_ssh_key" "ssh_key_performance" {
-  label      = "${var.ssh-label}"
-  notes      = "for scale group"
-  public_key = ""
-}
+#resource "ibm_compute_ssh_key" "ssh_key_performance" {
+#  label      = "${var.ssh-label}"
+#  notes      = "for scale group"
+#  public_key = ""
+#}
 
 resource "ibm_lb" "local_lb" {
   connections = "${var.lb-connections}"
