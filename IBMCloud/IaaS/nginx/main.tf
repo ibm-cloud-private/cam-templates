@@ -9,17 +9,17 @@ terraform {
 }
 
 provider "ibm" {
-      bluemix_api_key    = "${var.ibm_bx_api_key}"
+      bluemix_api_key = "${var.ibm_bx_api_key}"
       softlayer_username = "${var.ibm_sl_username}"
       softlayer_api_key  = "${var.ibm_sl_api_key}"
 }
 
 # Create a new ssh key
-#resource "ibm_compute_ssh_key" "ssh_key_performance" {
-#  label      = "${var.ssh-label}"
-#  notes      = "for scale group"
-#  public_key = ""
-#}
+resource "ibm_compute_ssh_key" "ssh_key_performance" {
+  label      = "${var.ssh-label}"
+  notes      = "for scale group"
+  public_key = "${var.ssh-key}"
+}
 
 resource "ibm_lb" "local_lb" {
   connections = "${var.lb-connections}"
@@ -58,7 +58,7 @@ resource "ibm_compute_autoscale_group" "sample-http-cluster" {
     memory                  = "${var.vm-memory}"
     os_reference_code       = "${var.vm-os-reference-code}"
     datacenter              = "${var.datacenter}"
-#   ssh_key_ids             = ["${ibm_compute_ssh_key.ssh_key_performance.id}"]
+    ssh_key_ids             = ["${ibm_compute_ssh_key.ssh_key_performance.id}"]
     post_install_script_uri = "${var.vm-post-install-script-uri}"
   }
 }
