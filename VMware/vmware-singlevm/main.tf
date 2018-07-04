@@ -1,5 +1,7 @@
 ##################### Variables ###############################
 
+## REFERENCE {"vsphere_network":{"type": "vsphere_reference_network"}}
+
 variable "name" {
 	description = "Name of the Virtual Machine"
 }
@@ -22,22 +24,6 @@ variable "cluster" {
 	description = "Target vSphere Cluster to host the Virtual Machine"
 }
 
-variable "network_label" {
-	description = "vSphere Port Group or Network label for Virtual Machine's vNIC" 
-}
-
-variable "ipv4_address" {
-	description = "IPv4 address for vNIC configuration"
-}
-
-variable "ipv4_gateway" {
-	description = "IPv4 gateway for vNIC configuration"
-}
-
-variable "ipv4_prefix_length" {
-	description = "IPv4 Prefix length for vNIC configuration"
-}
-
 variable "storage" {
 	description = "Data store or storage cluster name for target VMs disks"
 }
@@ -51,15 +37,30 @@ variable "allow_selfsigned_cert" {
     default = true
 }
 
+variable "vm_1_resource_pool" {
+  type = "string"
+  description = "Resource pool."
+}
+
+variable "network1_network_name" {
+  type = "string"
+  description = "Generated"
+}
+
 ############### Optinal settings in provider ##########
 provider "vsphere" {
     version = "~> 1.0"
     allow_unverified_ssl = "${var.allow_selfsigned_cert}"  # Communication with vsphere server with self signed certificate
 }
  
-data "vsphere_datacenter" "datacenter" {
-  name = "${var.datacenter}"
-}
+#data "vsphere_datacenter" "datacenter" {
+#  name = "${var.datacenter}"
+#}
+
+#data "vsphere_network" "network1" {
+#  name          = "${var.network1_network_name}"
+#  datacenter_id = "${data.vsphere_datacenter.vm_1_datacenter.id}"
+#}
 
 ################## Resources ###############################
 
@@ -72,11 +73,9 @@ resource "vsphere_virtual_machine" "vm_1" {
   vcpu   = "${var.vcpu}"
   memory = "${var.memory}"
   cluster = "${var.cluster}"
+  resource_pool_id = "${var.vm_1_resource_pool}"
   network_interface {
-      label = "${var.network_label}"
-      ipv4_gateway = "${var.ipv4_gateway}"
-      ipv4_address = "${var.ipv4_address}"
-      ipv4_prefix_length = "${var.ipv4_prefix_length}"
+    network_id = "${data.vsphere_network.network1.id}"
   }
   disk {
     datastore = "${var.storage}"

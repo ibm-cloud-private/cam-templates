@@ -1,0 +1,14 @@
+{
+   "name": "My IBM Cloud Nginx",
+   "description": "My Template - IBM Cloud Nginx with auto scaling group",
+   "type": "userCreated",
+   "manifest": {
+     "template_type": "Terraform",
+     "template_format": "HCL",
+     "template_provider": "Other"
+   },
+   "metadata": {
+     "displayName": "My IBM Cloud Nginx",
+     "bullets": []
+   }
+ }
