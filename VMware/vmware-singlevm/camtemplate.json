@@ -1,5 +1,5 @@
 {
-  "name": "VMware Single VM",
+  "name": "My VMware Single VM",
   "description": "Create Virtual Machine with single NIC",
   "type": "prebuilt",
   "version": "1.0.0.0",
@@ -14,7 +14,7 @@
     }
   },
   "metadata": {
-      "displayName": "VMware Single VM",
+      "displayName": "My VMware Single VM",
       "longDescription": "Create Virtual Machine with single vnic on a network label by cloning"
   }
 }
