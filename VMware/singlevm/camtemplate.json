@@ -1,0 +1,14 @@
+{
+   "name": "My VMware Single VM",
+   "description": "My VMware Single VM",
+   "type": "userCreated",
+   "manifest": {
+     "template_type": "Terraform",
+     "template_format": "HCL",
+     "template_provider": "VMware vSphere"
+   },
+   "metadata": {
+     "displayName": "My VMware Single VM",
+     "bullets": []
+   }
+ }
