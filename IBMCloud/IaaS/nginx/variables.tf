@@ -111,16 +111,3 @@ variable "scale-policy-scale-amount" {
 variable "scale-policy-cooldown" {
   default = 35
 }
-
-variable "ibm_sl_username" {
-  default = ""
-}
-
-variable "ibm_sl_api_key" {
-  default = ""
-}
-
-variable "ibm_bx_api_key" {
-  type = "string"
-  description = "Ibm Bx Api Key"
-}

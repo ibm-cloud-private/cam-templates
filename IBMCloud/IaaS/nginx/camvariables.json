@@ -355,45 +355,6 @@
       "hidden": false,
       "immutable": false,
       "immutable_after_create": false
-    },
-    {
-      "name": "ibm_sl_username",
-      "label": "Ibm Sl Username",
-      "description": "Ibm Sl Username",
-      "type": "string",
-      "default": "",
-      "validation": "",
-      "required": true,
-      "secured": false,
-      "hidden": false,
-      "immutable": false,
-      "immutable_after_create": false
-    },
-    {
-      "name": "ibm_sl_api_key",
-      "label": "Ibm Sl Api Key",
-      "description": "Ibm Sl Api Key",
-      "type": "string",
-      "default": "",
-      "validation": "",
-      "required": true,
-      "secured": false,
-      "hidden": false,
-      "immutable": false,
-      "immutable_after_create": false
-    },
-    {
-      "name": "ibm_bx_api_key",
-      "label": "Ibm Bx Api Key",
-      "description": "Ibm Bx Api Key",
-      "type": "string",
-      "default": "",
-      "validation": "",
-      "required": false,
-      "secured": false,
-      "hidden": false,
-      "immutable": false,
-      "immutable_after_create": false
     }
   ],
   "template_output_params": [ ]
