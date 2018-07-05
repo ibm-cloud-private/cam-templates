@@ -24,16 +24,6 @@ variable "vm0_memory" {
   description = "Memory allocation."
 }
 
-variable "vm0_disk_name" {
-  type = "string"
-  description = "The name of the disk. Forces a new disk if changed. This should only be a longer path if attaching an external disk."
-}
-
-variable "vm0_disk_size" {
-  type = "string"
-  description = "The size of the disk, in GiB."
-}
-
 variable "vm0_template_name" {
   type = "string"
   description = "Generated"
@@ -49,13 +39,13 @@ variable "vm0_datastore_name" {
   description = "Generated"
 }
 
-variable "vm0_resource_pool" {
-  type = "string"
-  description = "Resource pool."
-}
-
 variable "net0_network_name" {
   type = "string"
   description = "Generated"
+}
+
+variable "cluster1_cluster_name" {
+  type = "string"
+  description = "Cluster name"
 }
 

@@ -58,32 +58,6 @@
       "immutable_after_create": false
     },
     {
-      "name": "vm0_disk_name",
-      "label": "Vm 0 Disk Name",
-      "description": "The name of the disk. Forces a new disk if changed. This should only be a longer path if attaching an external disk.",
-      "type": "string",
-      "default": "",
-      "validation": "",
-      "required": true,
-      "secured": false,
-      "hidden": false,
-      "immutable": false,
-      "immutable_after_create": false
-    },
-    {
-      "name": "vm0_disk_size",
-      "label": "Vm 0 Disk Size",
-      "description": "The size of the disk, in GiB.",
-      "type": "string",
-      "default": "",
-      "validation": "",
-      "required": true,
-      "secured": false,
-      "hidden": false,
-      "immutable": false,
-      "immutable_after_create": false
-    },
-    {
       "name": "vm0_template_name",
       "label": "Vm 0 Template Name",
       "description": "Generated",
@@ -123,9 +97,9 @@
       "immutable_after_create": false
     },
     {
-      "name": "vm0_resource_pool",
-      "label": "Vm 0 Resource Pool",
-      "description": "Resource pool.",
+      "name": "net0_network_name",
+      "label": "Net 0 Network Name",
+      "description": "Generated",
       "type": "string",
       "default": "",
       "validation": "",
@@ -136,9 +110,9 @@
       "immutable_after_create": false
     },
     {
-      "name": "net0_network_name",
-      "label": "Net 0 Network Name",
-      "description": "Generated",
+      "name": "cluster1_cluster_name",
+      "label": "Cluster 1 Cluster Name",
+      "description": "Cluster name",
       "type": "string",
       "default": "",
       "validation": "",
