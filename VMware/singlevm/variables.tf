@@ -4,11 +4,6 @@
 ##
 #####################################################################
 
-variable "allow_unverified_ssl" {
-  type = "string"
-  description = "Generated"
-}
-
 variable "vm0_name" {
   type = "string"
   description = "Virtual machine name for vm0"
@@ -47,5 +42,11 @@ variable "net0_network_name" {
 variable "cluster1_cluster_name" {
   type = "string"
   description = "Cluster name"
+}
+
+variable "allow_unverified_ssl" {
+  type = "string"
+  description = "Generated"
+  default = "TRUE"
 }
 

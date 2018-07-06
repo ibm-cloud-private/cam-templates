@@ -6,19 +6,6 @@
   "output_groups": [ ],
   "template_input_params": [
     {
-      "name": "allow_unverified_ssl",
-      "label": "Allow Unverified Ssl",
-      "description": "Generated",
-      "type": "string",
-      "default": "",
-      "validation": "",
-      "required": true,
-      "secured": false,
-      "hidden": false,
-      "immutable": false,
-      "immutable_after_create": false
-    },
-    {
       "name": "vm0_name",
       "label": "Vm 0 Name",
       "description": "Virtual machine name for vm0",
@@ -115,6 +102,19 @@
       "description": "Cluster name",
       "type": "string",
       "default": "",
+      "validation": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "allow_unverified_ssl",
+      "label": "Allow Unverified Ssl",
+      "description": "Generated",
+      "type": "string",
+      "default": "TRUE",
       "validation": "",
       "required": true,
       "secured": false,
