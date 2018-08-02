@@ -2,7 +2,28 @@
   "input_datatypes": [ ],
   "input_namespaces": [ ],
   "output_namespace": "",
-  "input_groups": [ ],
+  "input_groups": [
+    {
+      "name": "Networking",
+      "label": "Networking"
+    },
+    {
+      "name": "Instances",
+      "label": "Instances"
+    },
+    {
+      "name": "Instances-vsphere_virtual_machine.virtual_machine2",
+      "label": "Instances - vsphere_virtual_machine.virtual_machine2"
+    },
+    {
+      "name": "Instances-vsphere_virtual_machine.vm0",
+      "label": "Instances - vsphere_virtual_machine.vm0"
+    },
+    {
+      "name": "Other",
+      "label": "Other"
+    }
+  ],
   "output_groups": [ ],
   "template_input_params": [
     {
@@ -12,6 +33,7 @@
       "type": "string",
       "default": "",
       "validation": "",
+      "group_name": "Instances-vsphere_virtual_machine.vm0",
       "required": true,
       "secured": false,
       "hidden": false,
@@ -25,6 +47,7 @@
       "type": "string",
       "default": "",
       "validation": "",
+      "group_name": "Instances-vsphere_virtual_machine.vm0",
       "required": true,
       "secured": false,
       "hidden": false,
@@ -38,6 +61,7 @@
       "type": "string",
       "default": "",
       "validation": "",
+      "group_name": "Instances-vsphere_virtual_machine.vm0",
       "required": true,
       "secured": false,
       "hidden": false,
@@ -51,6 +75,7 @@
       "type": "string",
       "default": "",
       "validation": "",
+      "group_name": "Instances",
       "required": true,
       "secured": false,
       "hidden": false,
@@ -64,6 +89,7 @@
       "type": "string",
       "default": "",
       "validation": "",
+      "group_name": "Other",
       "required": true,
       "secured": false,
       "hidden": false,
@@ -77,6 +103,7 @@
       "type": "string",
       "default": "",
       "validation": "",
+      "group_name": "Other",
       "required": true,
       "secured": false,
       "hidden": false,
@@ -90,6 +117,7 @@
       "type": "string",
       "default": "",
       "validation": "",
+      "group_name": "Networking",
       "required": true,
       "secured": false,
       "hidden": false,
@@ -103,6 +131,7 @@
       "type": "string",
       "default": "",
       "validation": "",
+      "group_name": "Other",
       "required": true,
       "secured": false,
       "hidden": false,
@@ -116,6 +145,7 @@
       "type": "string",
       "default": "TRUE",
       "validation": "",
+      "group_name": "Other",
       "required": true,
       "secured": false,
       "hidden": false,

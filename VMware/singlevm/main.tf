@@ -10,6 +10,7 @@ terraform {
   required_version = "> 0.8.0"
 }
 
+
 provider "vsphere" {
   allow_unverified_ssl = "${var.allow_unverified_ssl}"
   version = "~> 1.2"
@@ -58,3 +59,4 @@ resource "vsphere_virtual_machine" "vm0" {
     template_uuid = "${data.vsphere_virtual_machine.vm0_template.id}"
   }
 }
+
